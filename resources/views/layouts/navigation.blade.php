@@ -1,23 +1,36 @@
- @section('navigation')
- <nav class="main-nav">
+  <nav class="main-nav">
                     <ul class="list-unstyled ">
-                        <li class="">
-                            <a href="https://caworksite.com/Weedulu/index.php/brand">Brands</a>
-                        </li>
-                        <!--<li class="menu-item-has-children">
-                            <a href="index.html">About Us</a>
-                            <ul>
-                                <li><a href="how-it-works.html">How It Works</a></li>
-                                <li><a href="blog.html">Blog</a></li>                               
-                            </ul>
-                        </li> -->
-                                                <li class="">
-                            <a href="https://caworksite.com/Weedulu/index.php/mylisting/dashboard" class="">My Account</a>                      
-                        </li>
-                        <!--<li class="">
-                            <a href="list.html">Shop</a>                            
-                        </li>-->
+
+
+                    @if (Auth::guest())
+                            <li> <a href="#">Brands</a></li>
+                            <li> <a href="#">Maps</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                        <li> <a href="#">Brands</a></li>
+                            <li> <a href="#">Maps</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+
+
                     </ul>
                 </nav> <!-- end .main-nav -->
-                <a href="" class="responsive-menu-open"><i class="fa fa-bars"></i></a>
-                @endsection

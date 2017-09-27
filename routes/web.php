@@ -28,8 +28,13 @@ Route::get('/maps', function() {
   return view('welcome');
 });
 
+Route::get('/admin/login', function() { 
+    return view('backend/login');
+
+});
+
 Route::get('/admin/dashboard', function() { 
-    return view('admin/dashboard');
+    return view('backend/dashboard');
 
 });
 

@@ -45,40 +45,9 @@
 
             </div> <!-- end .left -->
             <div class="navigation clearfix col-lg-9 col-lg-push-3 text-right" style="left:0%">
-                <nav class="main-nav">
-                    <ul class="list-unstyled ">
+              
+                           @include('layouts/navigation')
 
-
-                    @if (Auth::guest())
-                            <li> <a href="#">Brands</a></li>
-                            <li> <a href="#">Maps</a></li>
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-
-
-                    </ul>
-                </nav> <!-- end .main-nav -->
                 <a href="" class="responsive-menu-open"><i class="fa fa-bars"></i></a>
             </div> <!-- end .navigation --> 
             </div>
